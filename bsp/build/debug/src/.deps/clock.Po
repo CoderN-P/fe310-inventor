@@ -1,0 +1,8 @@
+src/clock.o: \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/src/clock.c \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/clock.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/clock.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h:

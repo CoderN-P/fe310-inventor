@@ -1,0 +1,5 @@
+src/drivers/sifive_trace.o: \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/src/drivers/sifive_trace.c \
+ metal/machine/platform.h
+
+metal/machine/platform.h:

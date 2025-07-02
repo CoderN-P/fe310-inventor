@@ -1,0 +1,131 @@
+src/drivers/riscv_plic0.o: \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/src/drivers/riscv_plic0.c \
+ metal/machine/platform.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/riscv_plic0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/compiler.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/riscv_cpu.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/cpu.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/interrupt.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/lib/gcc/riscv64-unknown-elf/8.3.0/include/stdint.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/stdint.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/machine/_default_types.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/sys/features.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/_newlib_version.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/sys/_intsup.h \
+ /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/sys/_stdint.h \
+ metal/machine.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/io.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/fixed-clock.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/clock.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/memory.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/riscv_clint0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/pmp.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_gpio0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/gpio.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_gpio-leds.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/led.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_i2c0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/i2c.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_pwm0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/pwm.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_rtc0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/rtc.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_spi0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/spi.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_uart0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/uart.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_wdog0.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/watchdog.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_hfrosc.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_prci.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_hfxosc.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_lfrosc.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_pll.h \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/shutdown.h
+
+metal/machine/platform.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/riscv_plic0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/compiler.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/riscv_cpu.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/cpu.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/interrupt.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/lib/gcc/riscv64-unknown-elf/8.3.0/include/stddef.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/lib/gcc/riscv64-unknown-elf/8.3.0/include/stdint.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/stdint.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/machine/_default_types.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/sys/features.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/_newlib_version.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/sys/_intsup.h:
+
+/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/riscv64-unknown-elf/include/sys/_stdint.h:
+
+metal/machine.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/io.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/fixed-clock.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/clock.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/memory.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/riscv_clint0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/pmp.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_gpio0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/gpio.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_gpio-leds.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/led.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_i2c0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/i2c.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_pwm0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/pwm.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_rtc0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/rtc.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_spi0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/spi.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_uart0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/uart.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_wdog0.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/watchdog.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_hfrosc.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_prci.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_hfxosc.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_lfrosc.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/drivers/sifive_fe310-g000_pll.h:
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/shutdown.h:

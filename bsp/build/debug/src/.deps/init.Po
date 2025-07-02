@@ -1,0 +1,5 @@
+src/init.o: \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/src/init.c \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/init.h
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/init.h:

@@ -1,0 +1,5 @@
+gloss/sys_exit.o: \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/gloss/sys_exit.c \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/shutdown.h
+
+/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/metal/shutdown.h:

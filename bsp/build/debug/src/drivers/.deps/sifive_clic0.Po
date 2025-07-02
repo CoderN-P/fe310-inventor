@@ -1,0 +1,5 @@
+src/drivers/sifive_clic0.o: \
+ /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/src/drivers/sifive_clic0.c \
+ metal/machine/platform.h
+
+metal/machine/platform.h:
