@@ -3,11 +3,14 @@
 
 #include <stdint.h>
 #include <metal/cpu.h>
+#include <string.h>
+#include "metal/spi.h"
 
 #define LED_MATRIX_GPIO 22 // GPIO pin for LED matrix
 #define LED_WIDTH 8 // Width of the LED matrix
 #define LED_HEIGHT 6 // Height of the LED matrix
 #define NUM_LEDS (LED_WIDTH * LED_HEIGHT) // Total number of LEDs in the matrix
+#define SPI_BUF_SIZE (NUM_LEDS * 24) // 24 SPI bytes per RGB pixel
 #define GPIO_BASE        0x10012000UL // Base memory address for GPIO registers
 #define GPIO_OUTPUT_VAL_OFFSET 0x0C
 #define PIN_MASK (1 << LED_MATRIX_GPIO) // Mask for LED matrix GPIO pin
@@ -32,17 +35,16 @@ typedef struct Color {
     uint8_t b; // Blue component (0-255)
 } Color;
 
-Color led_matrix[LED_WIDTH*LED_HEIGHT];
+uint8_t spi_buffer[SPI_BUF_SIZE];
 uint64_t last_led_update_time; // Last time the LED matrix was updated
 
 extern struct metal_cpu *cpu; // Global CPU pointer for direct timer access
-void send_bit(uint8_t bit);
-void send_byte(uint8_t byte);
-void send_color(Color color);
-void clear(void);
-void show();
+void clear_matrix(struct metal_spi *spi);
+void show_matrix(struct metal_spi *spi);
+void matrix_hardware_init();
+void test_matrix();
 uint8_t brightness_from_lux(float lux);
-void set_pixel(int x, int y, uint8_t r, uint8_t g, uint8_t b);
+void set_pixel(int x, int y, Color c);
 void bubble_level(float pitch, float roll, float lux);
 Color hsv_to_rgb(uint8_t h, uint8_t s, uint8_t v);
 void clear_led_matrix(void);

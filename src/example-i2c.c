@@ -42,10 +42,12 @@ int main() {
 
     SensorData sensor_data;
 
-    init_buttons();
-    gpio_direct_init();
+    // init_buttons();
+    // matrix_hardware_init();
     delay_ms(1000); // Allow GPIO setup to stabilize
     calibrate_magnetometer();
+
+    printf("READY!");
 
     while (1) {
         read_data(&sensor_data); // Read data from UART and process commands
@@ -53,16 +55,18 @@ int main() {
 
         // Update LED matrix
 
-
+/*
         if (current_state == BUBBLE_LEVEL){
             bubble_level(sensor_data.magnetometer.angle.pitch, sensor_data.magnetometer.angle.roll, sensor_data.light.lux);
         } else if (current_state == COMPASS){
-            compass(sensor_data.magnetometer.angle.heading, (Color){0, 30, 70});
+            compass(sensor_data.magnetometer.angle.heading, (Color){0, 10, 25});
         } else if (current_state == CALIBRATION){
             calibrate_magnetometer();
+        } else if (current_state == TEST){
+            test_matrix();
         }
         handle_state();
-
+*/
     }
 
     return OK;

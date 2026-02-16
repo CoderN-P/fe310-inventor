@@ -8,6 +8,7 @@ enum LED_STATE {
     BUBBLE_LEVEL,
     COMPASS,
     CALIBRATION,
+    TEST,
     OFF,
 };
 
