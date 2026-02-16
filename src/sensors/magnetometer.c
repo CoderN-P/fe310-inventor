@@ -39,12 +39,15 @@ MagnetometerAngleData magnetometer_angle(const MagnetometerData *mag, const Acce
     float pitch = atan2f(ax, sqrtf(ay * ay + az * az));
     float roll  = atan2f(-ay, sqrtf(ax * ax + az * az));
 
-    // Flip pitch if upside down (optional)
-    if (az < 0) pitch = -pitch;
+    if (az < 0) {
+        pitch = -pitch;
+    }
 
-    // Clamp pitch and roll (optional - adjust to your needs)
-    pitch = -fmaxf(fminf(pitch, M_PI / 12), -M_PI / 12); // ±15°
-    roll  = -fmaxf(fminf(roll,  M_PI / 6),  -M_PI / 6);  // ±30°
+    float pitch_clamped = -fmaxf(-M_PI / 12, fminf(pitch, M_PI / 12)); // clamp to -15 deg to 15 deg
+    float roll_clamped = -fmaxf(-M_PI / 6, fminf(roll, M_PI / 6)); // clamp to -30 deg to 30 deg
+
+
+
 
     // Tilt-compensate magnetometer readings
     float mx = q8_7_to_float(mag->x);
@@ -56,10 +59,10 @@ MagnetometerAngleData magnetometer_angle(const MagnetometerData *mag, const Acce
     float cal_x, cal_y, cal_z;
     calibrate_raw_data(mx, my, mz, &cal_x, &cal_y, &cal_z);
 
-    float mx2 = cal_x * cosf(pitch) + cal_z * sinf(pitch);
-    float my2 = cal_x * sinf(roll) * sinf(pitch)
-                + cal_y * cosf(roll)
-                - cal_z * sinf(roll) * cosf(pitch);
+    float mx2 = cal_x * cosf(pitch_clamped) + cal_z * sinf(pitch_clamped);
+    float my2 = cal_x * sinf(roll_clamped) * sinf(pitch_clamped)
+                + cal_y * cosf(roll_clamped)
+                - cal_z * sinf(roll_clamped) * cosf(pitch_clamped);
 
     // Compute heading from tilt-compensated values
     float heading_rad = atan2f(-my2, mx2);

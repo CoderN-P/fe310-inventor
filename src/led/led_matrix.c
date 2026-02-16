@@ -91,7 +91,7 @@ void show() {
         send_color(led_matrix[i]);
     }
     gpio_low(); // Ensure GPIO is low after sending
-    delay_us(1000); // Wait for 500us to latch the data
+    delay_us(2000); // Wait for 500us to latch the data
     enable_interrupts();
 }
 
@@ -120,6 +120,10 @@ void draw_bubble(int l, int r, int t, int b, Color color) {
 void bubble_level(float pitch, float roll, float lux) {
     // Clear the LED matrix
     clear_led_matrix();
+    // clamp pitch to 15 deg and roll to 30
+    pitch = -fmaxf(-15, fminf(pitch, 15));
+    roll = -fmaxf(-30, fminf(roll, 30));
+
     // Calculate how level the device is
     float total_tilt = sqrt(pitch*pitch + roll*roll);
 

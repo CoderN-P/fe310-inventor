@@ -127,12 +127,12 @@ void send_sensor_data(const SensorData *data){
     packet[16] = (data->magnetometer.z >> 8) & 0xFF; // Magnetometer Z high byte
 
     // Magnetometer angles
-    packet[17] = data->magnetometer.angle.heading & 0xFF; // Angle X low byte
-    packet[18] = (data->magnetometer.angle.heading >> 8) & 0xFF; // Angle X high byte
-    packet[19] = data->magnetometer.angle.pitch & 0xFF; // Angle Y low byte
-    packet[20] = (data->magnetometer.angle.pitch >> 8) & 0xFF; // Angle Y high byte
-    packet[21] = data->magnetometer.angle.roll & 0xFF; // Angle Z low byte
-    packet[22] = (data->magnetometer.angle.roll >> 8) & 0xFF; // Angle Z high byte
+    packet[17] = data->magnetometer.angle.heading & 0xFF; // Angle heading low byte
+    packet[18] = (data->magnetometer.angle.heading >> 8) & 0xFF; // Angle heading high byte
+    packet[19] = data->magnetometer.angle.pitch & 0xFF; // Angle pitch low byte
+    packet[20] = (data->magnetometer.angle.pitch >> 8) & 0xFF; // Angle pitch high byte
+    packet[21] = data->magnetometer.angle.roll & 0xFF; // Angle roll low byte
+    packet[22] = (data->magnetometer.angle.roll >> 8) & 0xFF; // Angle roll high byte
 
     // Light sensor data
     packet[23] = data->light.ch0 & 0xFF; // Light CH0 low byte
