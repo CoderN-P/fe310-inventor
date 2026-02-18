@@ -30,16 +30,16 @@ Kernel configured for up to 11 processors.
 Processor type: i486 (Intel 80486)
 Processors active: 0 1 2 3 4 5 6 7 8 9 10
 Primary memory available: 18.00 gigabytes
-Default processor set: 801 tasks, 7921 threads, 11 processors
-Load average: 6.45, Mach factor: 4.53
+Default processor set: 685 tasks, 6494 threads, 11 processors
+Load average: 3.96, Mach factor: 7.03
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin
-PATH: /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/sdk-utilities-0.1.0-2020.04.0
-PATH: /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/msys64-1.0.0-2020.01.0/usr/bin
-PATH: /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin
+PATH: /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin
+PATH: /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/sdk-utilities-0.1.0-2020.04.0
+PATH: /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/msys64-1.0.0-2020.01.0/usr/bin
+PATH: /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin
 PATH: /usr/local/bin
 PATH: /usr/bin
 PATH: /bin
@@ -56,7 +56,7 @@ configure:1971: result: /usr/bin/install -c
 configure:1982: checking whether build environment is sane
 configure:2037: result: yes
 configure:2096: checking for riscv64-unknown-elf-strip
-configure:2112: found /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-strip
+configure:2112: found /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-strip
 configure:2123: result: riscv64-unknown-elf-strip
 configure:2188: checking for a thread-safe mkdir -p
 configure:2227: result: /Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/freedom-metal/install-sh -c -d
@@ -80,7 +80,7 @@ configure:2509: result: x86_64-apple-darwin24.4.0
 configure:2529: checking host system type
 configure:2542: result: riscv64-unknown-elf
 configure:2572: checking for riscv64-unknown-elf-gcc
-configure:2588: found /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-gcc
+configure:2588: found /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-gcc
 configure:2599: result: riscv64-unknown-elf-gcc
 configure:2868: checking for C compiler version
 configure:2877: riscv64-unknown-elf-gcc --version >&5
@@ -93,7 +93,7 @@ configure:2888: $? = 0
 configure:2877: riscv64-unknown-elf-gcc -v >&5
 Using built-in specs.
 COLLECT_GCC=riscv64-unknown-elf-gcc
-COLLECT_LTO_WRAPPER=/private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/../libexec/gcc/riscv64-unknown-elf/8.3.0/lto-wrapper
+COLLECT_LTO_WRAPPER=/Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/../libexec/gcc/riscv64-unknown-elf/8.3.0/lto-wrapper
 Target: riscv64-unknown-elf
 Configured with: /scratch/jenkins/workspace/tpp-freedom-tools/tpp01--build-binary-packages--parameterized/obj/x86_64-apple-darwin/build/riscv-gnu-toolchain/riscv-gcc/configure --target=riscv64-unknown-elf --prefix=/scratch/jenkins/workspace/tpp-freedom-tools/tpp01--build-binary-packages--parameterized/obj/x86_64-apple-darwin/install/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-apple-darwin --with-pkgversion='SiFive GCC 8.3.0-2020.04.1' --with-bugurl=https://github.com/sifive/freedom-tools/issues --disable-shared --disable-threads --enable-languages=c,c++ --enable-tls --with-newlib --with-sysroot=/scratch/jenkins/workspace/tpp-freedom-tools/tpp01--build-binary-packages--parameterized/obj/x86_64-apple-darwin/install/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-apple-darwin/riscv64-unknown-elf --with-native-system-header-dir=/include --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-tm-clone-registry --src=../riscv-gcc --with-system-zlib --enable-checking=yes --enable-multilib --with-abi=lp64d --with-arch=rv64imafdc CFLAGS=-O2 CXXFLAGS=-O2 'CFLAGS_FOR_TARGET=-Os  -mcmodel=medany' 'CXXFLAGS_FOR_TARGET=-Os  -mcmodel=medany'
 Thread model: single
@@ -153,10 +153,10 @@ configure:3451: result: GNU
 configure:3477: checking dependency style of riscv64-unknown-elf-gcc
 configure:3588: result: gcc3
 configure:3606: checking for riscv64-unknown-elf-ranlib
-configure:3622: found /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-ranlib
+configure:3622: found /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-ranlib
 configure:3633: result: riscv64-unknown-elf-ranlib
 configure:3701: checking for riscv64-unknown-elf-ar
-configure:3717: found /private/var/folders/fn/c320ylh162n58sqzz0495gg40000gq/T/AppTranslocation/A1BE9836-5096-4ECF-8461-650816F4D522/d/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-ar
+configure:3717: found /Applications/FreedomStudio.app/Contents/Eclipse/SiFive/riscv64-unknown-elf-gcc-8.3.0-2020.04.1/bin/riscv64-unknown-elf-ar
 configure:3728: result: riscv64-unknown-elf-ar
 configure:3798: checking the archiver (riscv64-unknown-elf-ar) interface
 configure:3814: riscv64-unknown-elf-gcc -c -march=rv32imac -mabi=ilp32 -mcmodel=medlow -ffunction-sections -fdata-sections -I/Users/neel123/wsFreedomStudio/sifive_hifive1_revb_example_i2c/bsp/install/include --specs=nano.specs -DMTIME_RATE_HZ_DEF=32768 -O0 -g  conftest.c >&5

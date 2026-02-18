@@ -12,26 +12,28 @@ void handle_state(){
         if (current_state == BUBBLE_LEVEL) {
             current_state = COMPASS;
         } else if (current_state == COMPASS) {
+            current_state = TEST;
+        } else if (current_state == TEST){
             current_state = CALIBRATION;
-            clear();
         } else if (current_state == CALIBRATION) {
             current_state = OFF;
-            clear();
         } else {
             current_state = BUBBLE_LEVEL;
         }
+        clear();
     } else if (current_button_a_state && !previous_button_a_state) {
         if (current_state == BUBBLE_LEVEL) {
             current_state = OFF;
-            clear();
         } else if (current_state == COMPASS) {
             current_state = BUBBLE_LEVEL;
-        } else if (current_state == CALIBRATION) {
+        } else if (current_state == TEST) {
             current_state = COMPASS;
+        } else if (current_state == CALIBRATION){
+            current_state = TEST;
         } else {
             current_state = CALIBRATION;
-            clear();
         }
+        clear();
     }
 
 

@@ -19,6 +19,7 @@ void print_esp(const char *packet, uint16_t length) {
         printf("UART device not initialized!\n");
         return;
     }
+    printf("UART ready!");
     for (size_t i = 0; i < length; i++) {
         metal_uart_putc(uart_device, packet[i]);
     }
@@ -75,6 +76,7 @@ void process_command(const uint8_t buffer[64], uint8_t length, const SensorData 
         printf("Checksum mismatch: expected 0x%02X, got 0x%02X\n", calculated_checksum, checksum);
         return;
     }
+    printf("Processing command!");
 
     switch (command) {
         case 0x01: // Sensor Request Command

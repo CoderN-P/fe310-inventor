@@ -22,10 +22,10 @@ void gpio_low(void) {
             "li t0, %0\n\t"
             "li t1, %1\n\t"
             "sw t1, %2(t0)\n\t"     // Set HIGH
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 5 NOPs
+            "nop\n\t nop\n\t nop\n\t nop\n\t"  // 4 NOPs
             "sw zero, %2(t0)\n\t"   // Set LOW
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 12 NOPs
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"
+            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 11 NOPs
+            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"
             :
             : "i" (GPIO_BASE), "i" (PIN_MASK), "i" (GPIO_OUTPUT_VAL_OFFSET)
             : "t0", "t1"
@@ -37,10 +37,10 @@ void gpio_high(void) {
             "li t0, %0\n\t"
             "li t1, %1\n\t"
             "sw t1, %2(t0)\n\t"     // Set HIGH
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 12 NOPs
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"
+            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 11 NOPs
+            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"
             "sw zero, %2(t0)\n\t"   // Set LOW
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 5 NOPs
+            "nop\n\t nop\n\t nop\n\t nop\n\t"  // 4 NOPs
             :
             : "i" (GPIO_BASE), "i" (PIN_MASK), "i" (GPIO_OUTPUT_VAL_OFFSET)
             : "t0", "t1"
@@ -68,31 +68,28 @@ void send_byte(uint8_t byte) {
     }
 }
 
-void send_color(Color color) {
+void send_color(uint8_t r, uint8_t g, uint8_t b) {
     // Send color data in GRB format
-    send_byte(color.g);
-    send_byte(color.r);
-    send_byte(color.b);
+    send_byte(g);
+    send_byte(r);
+    send_byte(b);
 }
+
 
 void clear() {
     // Clear the LED matrix by sending black color to all LEDs
     for (int i = 0; i < NUM_LEDS; i++) {
-        send_color((Color){0, 0, 0});
+        send_color(0, 0, 0);
     }
-    gpio_low(); // Ensure GPIO is low after sending
     delay_us(500); // Wait for 500us to latch the data
 }
 
 void show() {
     // Send color data for each LED in the matrix
-    disable_interrupts();
     for (int i = 0; i < LED_HEIGHT*LED_WIDTH; i++) {
-        send_color(led_matrix[i]);
+        send_color(led_matrix[i].r, led_matrix[i].g, led_matrix[i].b);
     }
-    gpio_low(); // Ensure GPIO is low after sending
-    delay_us(1000); // Wait for 500us to latch the data
-    enable_interrupts();
+    delay_us(500); // Wait for 500us to latch the data
 }
 
 
@@ -118,9 +115,8 @@ void draw_bubble(int l, int r, int t, int b, Color color) {
     set_pixel(r, b, color.r, color.g, color.b); // Bottom right
 }
 void bubble_level(float pitch, float roll, float lux) {
-    // Clear the LED matrix
-    clear_led_matrix();
     // Calculate how level the device is
+    clear_led_matrix();
     float total_tilt = sqrt(pitch*pitch + roll*roll);
 
     // Map angles to bubble position
@@ -159,9 +155,7 @@ void bubble_level(float pitch, float roll, float lux) {
 
 void compass(int heading, Color color) {
     // Clear the LED matrix
-
     clear_led_matrix();
-
     // Normalize heading to 0-360 degrees
     if (heading < 0) heading += 360;
     if (heading >= 360) heading -= 360;
@@ -175,6 +169,20 @@ void compass(int heading, Color color) {
     }
 
     show(); // Update the LED matrix display
+}
+
+void test(){
+    clear_led_matrix();
+    for (int r = 0; r < LED_HEIGHT; r++){
+        for (int c = 0; c < LED_WIDTH; c++){
+            if ((r+c)%2 == 0){
+                set_pixel(c, r, 0, 10, 0);
+            } else {
+                set_pixel(c, r, 0, 0, 10);
+            }
+        }
+    }
+    show();
 }
 
 uint8_t brightness_from_lux(float lux) {

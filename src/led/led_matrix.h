@@ -38,7 +38,7 @@ uint64_t last_led_update_time; // Last time the LED matrix was updated
 extern struct metal_cpu *cpu; // Global CPU pointer for direct timer access
 void send_bit(uint8_t bit);
 void send_byte(uint8_t byte);
-void send_color(Color color);
+void send_color(uint8_t r, uint8_t g, uint8_t b);
 void clear(void);
 void show();
 uint8_t brightness_from_lux(float lux);
@@ -47,4 +47,5 @@ void bubble_level(float pitch, float roll, float lux);
 Color hsv_to_rgb(uint8_t h, uint8_t s, uint8_t v);
 void clear_led_matrix(void);
 void compass(int heading, Color color);
+void test(void);
 #endif // LED_MATRIX_H

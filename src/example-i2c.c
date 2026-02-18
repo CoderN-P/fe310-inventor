@@ -49,20 +49,22 @@ int main() {
 
     while (1) {
         read_data(&sensor_data); // Read data from UART and process commands
-        sensors_read(&sensor_data); // Read sensor data
+        sensors_read(&sensor_data);
 
-        // Update LED matrix
-
-
+        disable_interrupts();
         if (current_state == BUBBLE_LEVEL){
             bubble_level(sensor_data.magnetometer.angle.pitch, sensor_data.magnetometer.angle.roll, sensor_data.light.lux);
-        } else if (current_state == COMPASS){
-            compass(sensor_data.magnetometer.angle.heading, (Color){0, 30, 70});
+        } else if (current_state == COMPASS) {
+            compass(sensor_data.magnetometer.angle.heading, (Color) {0, 15, 30});
+        } else if (current_state == TEST){
+            test();
         } else if (current_state == CALIBRATION){
+            enable_interrupts();
             calibrate_magnetometer();
         }
-        handle_state();
+        enable_interrupts();
 
+        handle_state();
     }
 
     return OK;
