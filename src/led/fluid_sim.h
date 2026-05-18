@@ -21,7 +21,7 @@
 #define OVER_RELAXATION 1.9f
 #define PRESSURE_ITERATIONS 4
 #define PUSH_ITERATIONS 1
-#define FLIP_RATIO 0.98
+#define FLIP_RATIO 1.0f
 
 #define clamp(v, lo, hi) (((v) < (lo)) ? (lo) : (((v) > (hi)) ? (hi) : (v)))
 

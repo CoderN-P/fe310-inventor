@@ -19,9 +19,10 @@ void handle_state(){
             current_state = CALIBRATION;
         } else if (current_state == CALIBRATION) {
             current_state = OFF;
-        } else {
+        } else if (current_state == OFF){
             current_state = BUBBLE_LEVEL;
         }
+
         clear();
     } else if (current_button_a_state && !previous_button_a_state) {
         if (current_state == BUBBLE_LEVEL) {
@@ -34,9 +35,10 @@ void handle_state(){
             current_state = FLUID_SIM;
         } else if (current_state == CALIBRATION){
             current_state = TEST;
-        } else {
+        } else if (current_state == OFF){
             current_state = CALIBRATION;
         }
+
         clear();
     }
 

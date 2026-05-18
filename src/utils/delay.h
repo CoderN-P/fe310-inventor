@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-#define MTIME_FREQ_HZ 32768
+extern struct metal_clock __metal_dt_clock_4;
 
 void delay_ms(uint32_t ms);
 void delay_us(uint32_t us);

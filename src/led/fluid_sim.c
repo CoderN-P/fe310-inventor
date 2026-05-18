@@ -68,8 +68,8 @@ static void updateParticles(float pitch, float roll){
         particles[i].x += particles[i].u * TIME_STEP;
         particles[i].y += particles[i].v * TIME_STEP;
 
-        if (particles[i].x < PARTICLE_RADIUS) {
-            particles[i].x = PARTICLE_RADIUS;
+        if (particles[i].x < PARTICLE_RADIUS + CELL_SIZE) {
+            particles[i].x = PARTICLE_RADIUS + CELL_SIZE;
             particles[i].u = 0;
         } else if (particles[i].x > (WIDTH - 1) * CELL_SIZE - PARTICLE_RADIUS) {
             particles[i].x = (WIDTH - 1) * CELL_SIZE - PARTICLE_RADIUS;
@@ -159,15 +159,15 @@ static void transferVelocities(bool toGrid){
             } else {
                 float valid0, valid1, valid2, valid3;
                 if (component == 0) {
-                    valid0 = (cellType[x0][y0] != AIR || cellType[x0 - 1][y0] != AIR) ? 1.0 : 0.0;
-                    valid1 = (cellType[x1][y0] != AIR || cellType[x1 - 1][y0] != AIR) ? 1.0 : 0.0;
-                    valid2 = (cellType[x0][y1] != AIR || cellType[x0 - 1][y1] != AIR) ? 1.0 : 0.0;
-                    valid3 = (cellType[x1][y1] != AIR || cellType[x1 - 1][y1] != AIR) ? 1.0 : 0.0;
+                    valid0 = (x0 > 0 && (cellType[x0][y0] != AIR || cellType[x0 - 1][y0] != AIR)) ? 1.0 : 0.0;
+                    valid1 = (x1 > 0 && (cellType[x1][y0] != AIR || cellType[x1 - 1][y0] != AIR)) ? 1.0 : 0.0;
+                    valid2 = (x0 > 0 && (cellType[x0][y1] != AIR || cellType[x0 - 1][y1] != AIR)) ? 1.0 : 0.0;
+                    valid3 = (x1 > 0 && (cellType[x1][y1] != AIR || cellType[x1 - 1][y1] != AIR)) ? 1.0 : 0.0;
                 } else {
-                    valid0 = (cellType[x0][y0] != AIR || cellType[x0][y0 - 1] != AIR) ? 1.0 : 0.0;
-                    valid1 = (cellType[x1][y0] != AIR || cellType[x1][y0 - 1] != AIR) ? 1.0 : 0.0;
-                    valid2 = (cellType[x0][y1] != AIR || cellType[x0][y1 - 1] != AIR) ? 1.0 : 0.0;
-                    valid3 = (cellType[x1][y1] != AIR || cellType[x1][y1 - 1] != AIR) ? 1.0 : 0.0;
+                    valid0 = (y0 > 0 && (cellType[x0][y0] != AIR || cellType[x0][y0 - 1] != AIR)) ? 1.0 : 0.0;
+                    valid1 = (y0 > 0 && (cellType[x1][y0] != AIR || cellType[x1][y0 - 1] != AIR)) ? 1.0 : 0.0;
+                    valid2 = (y1 > 0 && (cellType[x0][y1] != AIR || cellType[x0][y1 - 1] != AIR)) ? 1.0 : 0.0;
+                    valid3 = (y1 > 0 && (cellType[x1][y1] != AIR || cellType[x1][y1 - 1] != AIR)) ? 1.0 : 0.0;
                 }
 
                 float d = valid0 * d0 + valid1 * d1 + valid2 * d2 + valid3 * d3;
@@ -331,3 +331,4 @@ static void pushParticlesApart(void){
         }
     }
 }
+
