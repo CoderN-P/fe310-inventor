@@ -12,6 +12,8 @@ void handle_state(){
         if (current_state == BUBBLE_LEVEL) {
             current_state = COMPASS;
         } else if (current_state == COMPASS) {
+            current_state = FLUID_SIM;
+        } else if (current_state == FLUID_SIM) {
             current_state = TEST;
         } else if (current_state == TEST){
             current_state = CALIBRATION;
@@ -26,8 +28,10 @@ void handle_state(){
             current_state = OFF;
         } else if (current_state == COMPASS) {
             current_state = BUBBLE_LEVEL;
-        } else if (current_state == TEST) {
+        } else if (current_state == FLUID_SIM) {
             current_state = COMPASS;
+        } else if (current_state == TEST) {
+            current_state = FLUID_SIM;
         } else if (current_state == CALIBRATION){
             current_state = TEST;
         } else {

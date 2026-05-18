@@ -43,8 +43,10 @@ MagnetometerAngleData magnetometer_angle(const MagnetometerData *mag, const Acce
     if (az < 0) pitch = -pitch;
 
     // Clamp pitch and roll (optional - adjust to your needs)
-    pitch = -fmaxf(fminf(pitch, M_PI / 12), -M_PI / 12); // ±15°
-    roll  = -fmaxf(fminf(roll,  M_PI / 6),  -M_PI / 6);  // ±30°
+
+    pitch = -fmaxf(fminf(pitch, M_PI / 2), -M_PI / 2); // ±90°
+    roll  = -fmaxf(fminf(roll,  M_PI / 2),  -M_PI / 2);  // ±90°
+
 
     // Tilt-compensate magnetometer readings
     float mx = q8_7_to_float(mag->x);

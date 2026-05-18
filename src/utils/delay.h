@@ -7,8 +7,7 @@
 
 #include <stdint.h>
 
-#define MTIME_FREQ 16000000  // 16 MHz default HFROSC
-#define CPU_FREQ_HZ 16000000  // 16 MHz HFROSC
+#define MTIME_FREQ_HZ 32768
 
 void delay_ms(uint32_t ms);
 void delay_us(uint32_t us);

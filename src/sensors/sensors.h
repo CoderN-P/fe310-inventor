@@ -5,7 +5,7 @@
 #include "temperature.h"
 #include "light.h"
 #include "magnetometer.h"
-#define CPU_FREQ_HZ 16000000 // 16 MHz CPU frequency
+#define CPU_FREQ_HZ 150000000 // 150 MHz CPU frequency
 
 #define ACCEL_UPDATE_INTERVAL 3 // ms
 #define MAGNETOMETER_UPDATE_INTERVAL 10 // ms

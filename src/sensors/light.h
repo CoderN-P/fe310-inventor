@@ -8,6 +8,7 @@
 // LTR-329 Light Sensor
 
 #include <stdint.h>
+#include <stdbool.h>
 #define LIGHT_I2C_ADDR 0x29
 #define ALS_CONTROL_REG 0x80
 #define ALS_MEAS_RATE_REG 0x85
@@ -20,9 +21,13 @@
 #define ALS_DATA_CH1_LOW 0x88 // IR only (low byte)
 #define ALS_DATA_CH1_HIGH 0x89 // IR only (high byte)
 #define ID_CMD_REG 0x86 // Device ID register
+#define BASE_ALPHA 0.05
+#define JUMP_THRESHOLD 20.0
 
 static const float LIGHT_GAIN = 1.0f;
 static const float LIGHT_INTEGRATION_TIME = 100.0f;
+
+static float smoothed_lux = -1.0f;
 
 static uint8_t enable_light_sensor[] = { ALS_CONTROL_REG, ALS_CONTROL_CMD };
 static uint8_t config_light_sensor[] = { ALS_MEAS_RATE_REG, ALS_MEAS_RATE_CMD };
@@ -34,7 +39,7 @@ typedef struct {
 } LightSensorData;
 
 void light_sensor_init(void);
-void light_sensor_read(LightSensorData *data);
+void light_sensor_read(LightSensorData *data, bool filter);
 float light_lux(const LightSensorData  *data);
 void light_whoami(void);
 

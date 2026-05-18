@@ -7,7 +7,7 @@ void light_sensor_init() {
     metal_i2c_write(metal_i2c_get_device(0), LIGHT_I2C_ADDR, 2, config_light_sensor, METAL_I2C_STOP_ENABLE);
 }
 
-void light_sensor_read(LightSensorData *data) {
+void light_sensor_read(LightSensorData *data, bool filter) {
     uint8_t reg;
     uint8_t raw_data[4];  // [0]=CH1_L, [1]=CH1_H, [2]=CH0_L, [3]=CH0_H
 
@@ -33,7 +33,26 @@ void light_sensor_read(LightSensorData *data) {
 
     data->ch1 = ((uint16_t)raw_data[1] << 8) | raw_data[0];  // IR
     data->ch0 = ((uint16_t)raw_data[3] << 8) | raw_data[2];  // Vis + IR
-    data->lux = light_lux(data);
+
+    float raw_lux = light_lux(data);
+
+    if (filter){
+        if (smoothed_lux < 0) {
+            smoothed_lux = raw_lux; // Initialize on first read
+        } else {
+            float delta = raw_lux - smoothed_lux;
+            float current_alpha = BASE_ALPHA;
+
+            if (delta > JUMP_THRESHOLD){
+                current_alpha = 0.7;
+            }
+
+            smoothed_lux = (current_alpha * raw_lux) + ((1 - current_alpha) * smoothed_lux);
+        }
+        data->lux = smoothed_lux;
+    } else {
+        data->lux = raw_lux;
+    }
 }
 
 float light_lux(const LightSensorData *data){

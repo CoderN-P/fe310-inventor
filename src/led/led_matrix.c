@@ -6,6 +6,7 @@
 #include <math.h>
 #include <metal/cpu.h>
 #include <stdint.h>
+#include "fluid_sim.h"
 
 
 
@@ -17,37 +18,7 @@ void enable_interrupts() {
     asm volatile("csrrs x0, mstatus, %0" :: "r"(0x8)); // Set MIE bit in mstatus
 }
 
-void gpio_low(void) {
-    asm volatile (
-            "li t0, %0\n\t"
-            "li t1, %1\n\t"
-            "sw t1, %2(t0)\n\t"     // Set HIGH
-            "nop\n\t nop\n\t nop\n\t nop\n\t"  // 4 NOPs
-            "sw zero, %2(t0)\n\t"   // Set LOW
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 11 NOPs
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"
-            :
-            : "i" (GPIO_BASE), "i" (PIN_MASK), "i" (GPIO_OUTPUT_VAL_OFFSET)
-            : "t0", "t1"
-            );
-}
 
-void gpio_high(void) {
-    asm volatile (
-            "li t0, %0\n\t"
-            "li t1, %1\n\t"
-            "sw t1, %2(t0)\n\t"     // Set HIGH
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"  // 11 NOPs
-            "nop\n\t nop\n\t nop\n\t nop\n\t nop\n\t"
-            "sw zero, %2(t0)\n\t"   // Set LOW
-            "nop\n\t nop\n\t nop\n\t nop\n\t"  // 4 NOPs
-            :
-            : "i" (GPIO_BASE), "i" (PIN_MASK), "i" (GPIO_OUTPUT_VAL_OFFSET)
-            : "t0", "t1"
-            );
-}
-
-// Don't forget to enable GPIO 22 as output first
 void gpio_direct_init(void) {
     volatile uint32_t *gpio_output_en = (uint32_t*)(GPIO_BASE + 0x08);
     *gpio_output_en |= PIN_MASK;  // Enable pin 22 as output
@@ -56,9 +27,9 @@ void gpio_direct_init(void) {
 
 void send_bit(uint8_t bit) {
     if (bit) {
-        gpio_high(); // Set GPIO high
+        gpio_high(); // Send "1" bit
     } else {
-        gpio_low();
+        gpio_low();  // Send "0" bit
     }
 }
 
@@ -81,7 +52,7 @@ void clear() {
     for (int i = 0; i < NUM_LEDS; i++) {
         send_color(0, 0, 0);
     }
-    delay_us(500); // Wait for 500us to latch the data
+    delay_us(300); // Wait for 500us to latch the data
 }
 
 void show() {
@@ -89,7 +60,7 @@ void show() {
     for (int i = 0; i < LED_HEIGHT*LED_WIDTH; i++) {
         send_color(led_matrix[i].r, led_matrix[i].g, led_matrix[i].b);
     }
-    delay_us(500); // Wait for 500us to latch the data
+    delay_us(300); // Wait for 500us to latch the data
 }
 
 
@@ -114,9 +85,13 @@ void draw_bubble(int l, int r, int t, int b, Color color) {
     set_pixel(l, b, color.r, color.g, color.b); // Bottom left
     set_pixel(r, b, color.r, color.g, color.b); // Bottom right
 }
-void bubble_level(float pitch, float roll, float lux) {
+void bubble_level(float pitch_raw, float roll_raw, float lux) {
     // Calculate how level the device is
     clear_led_matrix();
+    // clamp pitch and roll to 30 deg magnitude
+
+    float pitch = fmaxf(fminf(pitch_raw, 30), -30);
+    float roll = fmaxf(fminf(roll_raw, 30), -30);
     float total_tilt = sqrt(pitch*pitch + roll*roll);
 
     // Map angles to bubble position
@@ -135,19 +110,21 @@ void bubble_level(float pitch, float roll, float lux) {
     if (bubble_top < 0) bubble_top = 0;
     if (bubble_bottom >= LED_HEIGHT) bubble_top = LED_HEIGHT - 1;
 
+    float brightness = brightness_from_lux(lux);
+
     if (total_tilt < 1.0f){
         // fill green
         for (int i = 0; i < LED_HEIGHT*LED_WIDTH; i++) {
-            led_matrix[i] = (Color){0, 10, 0}; // Fill the matrix with green
+            led_matrix[i] = (Color){0, brightness, 0}; // Fill the matrix with green
         }
     } else if (total_tilt < 5.0f) {
-        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){0, 10, 0}); // Green
+        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){0, brightness, 0}); // Green
     } else if (total_tilt < 15.0f) {
-        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){10, 10, 0}); // Yellow
+        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){brightness, brightness, 0}); // Yellow
     } else if (total_tilt < 25.0f) {
-        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){10, 5, 0}); // Orange
+        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){brightness, brightness / 2, 0}); // Orange
     } else {
-        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){10, 0, 0}); // Red
+        draw_bubble(bubble_left, bubble_right, bubble_top, bubble_bottom, (Color){brightness, 0, 0}); // Red
     }
 
     show(); // Update the LED matrix display
@@ -171,17 +148,50 @@ void compass(int heading, Color color) {
     show(); // Update the LED matrix display
 }
 
-void test(){
+void test(float lux){
     clear_led_matrix();
+
+    float brightness = brightness_from_lux(lux);
     for (int r = 0; r < LED_HEIGHT; r++){
         for (int c = 0; c < LED_WIDTH; c++){
             if ((r+c)%2 == 0){
-                set_pixel(c, r, 0, 10, 0);
+                set_pixel(c, r, 0, brightness, 0);
             } else {
-                set_pixel(c, r, 0, 0, 10);
+                set_pixel(c, r, 0, 0, brightness);
             }
         }
     }
+    show();
+}
+
+void fluid_sim(float pitch, float roll, float lux){
+    // convert pitch and roll to radians
+    float pitch_rad = pitch * M_PI / 180.0f;
+    float roll_rad = roll * M_PI / 180.0f;
+
+    update(pitch_rad, roll_rad);
+    clear_led_matrix();
+
+    for (int x = 1; x < WIDTH - 1; x++){
+        for (int y = 1; y < HEIGHT - 1; y++){
+            if (cellType[x][y] == WATER){
+                float density = particleDensity[x][y];
+                float t = 0;
+
+                if (particleRestDensity > 0.0f) {
+                    t = density / particleRestDensity;
+                }
+
+                if (t > 0.3f){
+                    uint8_t brightness = (uint8_t)clamp(t*128.0f, MIN_BRIGHTNESS, MAX_BRIGHTNESS);
+                    set_pixel(x - 1, y - 1, 0, 0, brightness);
+                }
+            } else {
+                set_pixel(x - 1, y - 1, 0, 0, 0);
+            }
+        }
+    }
+
     show();
 }
 

@@ -58,7 +58,7 @@ void sensors_read(SensorData *data) {
 
     if (now - lastLightSensorUpdateTime >= light_ticks) {
         lastLightSensorUpdateTime = now;
-        light_sensor_read(&data->light);
+        light_sensor_read(&data->light, true); // Use filtering for light sensor
 
         if (prev_lux < 0) {
             prev_lux = data->light.lux;

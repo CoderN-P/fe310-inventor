@@ -7,6 +7,7 @@
 enum LED_STATE {
     BUBBLE_LEVEL,
     COMPASS,
+    FLUID_SIM,
     TEST,
     CALIBRATION,
     OFF,
